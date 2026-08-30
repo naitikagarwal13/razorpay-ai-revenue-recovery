@@ -1477,6 +1477,88 @@ def get_payments():
             "message": str(e)
         }
 
+    # =========================
+# DELETE PAYMENT
+# =========================
+
+@app.delete("/payments/{payment_id}")
+def delete_payment(payment_id: int):
+
+    connection = get_db_connection()
+
+    if connection is None:
+        return {
+            "status": "error",
+            "message": "Could not connect to MySQL"
+        }
+
+    cursor = None
+
+    try:
+
+        cursor = connection.cursor()
+
+        # First check that the payment exists
+        cursor.execute(
+            """
+            SELECT id
+            FROM payments
+            WHERE id = %s
+            """,
+            (payment_id,)
+        )
+
+        payment = cursor.fetchone()
+
+        if payment is None:
+            return {
+                "status": "error",
+                "message": "Payment not found"
+            }
+
+        # Delete recovery actions linked to this payment first
+        cursor.execute(
+            """
+            DELETE FROM recovery_actions
+            WHERE payment_id = %s
+            """,
+            (payment_id,)
+        )
+
+        # Delete the payment itself
+        cursor.execute(
+            """
+            DELETE FROM payments
+            WHERE id = %s
+            """,
+            (payment_id,)
+        )
+
+        connection.commit()
+
+        return {
+            "status": "success",
+            "message": "Payment deleted successfully",
+            "payment_id": payment_id
+        }
+
+    except Error as e:
+
+        connection.rollback()
+
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+
+    finally:
+
+        if cursor:
+            cursor.close()
+
+        if connection:
+            connection.close()
+
 # =========================
 # RECOVERY METRICS
 # =========================

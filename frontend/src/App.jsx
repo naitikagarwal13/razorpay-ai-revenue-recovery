@@ -299,6 +299,50 @@ const [recoveryMetrics, setRecoveryMetrics] = useState({
     }
   };
 
+  const handleDeletePayment = async (paymentId) => {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this payment?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${API_URL}/payments/${paymentId}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Could not delete payment");
+    }
+
+    const data = await response.json();
+
+    if (data.status !== "success") {
+      throw new Error(
+        data.message || "Could not delete payment"
+      );
+    }
+
+    // Remove the deleted payment immediately from the UI
+    setPayments((currentPayments) =>
+      currentPayments.filter(
+        (payment) =>
+          payment.payment_id !== paymentId
+      )
+    );
+
+  } catch (err) {
+    alert(
+      "Unable to delete payment. Please try again."
+    );
+  }
+};
+
   const fetchRecoveryMetrics = async () => {
   try {
     const response = await fetch(
@@ -2040,6 +2084,7 @@ useEffect(() => {
                 <span>Method</span>
                 <span>Status</span>
                 <span>Payment ID</span>
+                <span>Action</span>
               </div>
 
               {paymentsLoading && (
@@ -2139,10 +2184,20 @@ useEffect(() => {
                     </div>
 
                     <div className="payment-id-cell">
-                      {payment.razorpay_payment_id ||
-                        `Payment #${payment.payment_id}`}
-                    </div>
+  {payment.razorpay_payment_id ||
+    `Payment #${payment.payment_id}`}
+</div>
 
+<div className="payment-delete-cell">
+  <button
+    className="delete-payment-button"
+    onClick={() =>
+      handleDeletePayment(payment.payment_id)
+    }
+  >
+    Delete
+  </button>
+</div>
                   </div>
 
                 ))}

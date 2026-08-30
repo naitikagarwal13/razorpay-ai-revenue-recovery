@@ -983,12 +983,14 @@ button {
 
 .payments-table-header {
   display: grid;
+
   grid-template-columns:
     minmax(180px, 1.5fr)
     minmax(100px, 0.8fr)
     minmax(100px, 0.8fr)
     minmax(100px, 0.8fr)
-    minmax(180px, 1.2fr);
+    minmax(180px, 1.2fr)
+    minmax(90px, 0.6fr);
 
   gap: 20px;
 
@@ -1009,26 +1011,56 @@ button {
   width: 100%;
 
   display: grid;
+
   grid-template-columns:
     minmax(180px, 1.5fr)
     minmax(100px, 0.8fr)
     minmax(100px, 0.8fr)
     minmax(100px, 0.8fr)
-    minmax(180px, 1.2fr);
+    minmax(180px, 1.2fr)
+    minmax(90px, 0.6fr);
 
   gap: 20px;
+
   align-items: center;
 
   padding: 20px 14px;
 
   border-bottom: 1px solid #e5e9ed;
 
-  color: #596779;
+  color: #596777;
 }
 
 .payment-row:hover {
   background: rgba(49, 94, 181, 0.03);
 }
+/* DELETE PAYMENT BUTTON */
+
+.payment-delete-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-payment-button {
+  border: none;
+  background: #dc2626;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-payment-button:hover {
+  background: #b91c1c;
+}
+
+.delete-payment-button:active {
+  transform: scale(0.97);
+}
+
 
 .payment-customer {
   display: flex;
