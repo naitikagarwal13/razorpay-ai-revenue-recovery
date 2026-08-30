@@ -380,12 +380,12 @@ button {
 
 .table-header {
   display: grid;
-  grid-template-columns:
-    minmax(180px, 1.6fr)
-    minmax(90px, 0.75fr)
-    minmax(80px, 0.65fr)
-    minmax(100px, 0.75fr)
-    30px;
+ grid-template-columns:
+    minmax(190px, 1.55fr)
+    minmax(95px, 0.7fr)
+    minmax(105px, 0.85fr)
+    minmax(110px, 0.85fr)
+    26px;
 
   gap: 18px;
 
@@ -411,11 +411,11 @@ button {
 
   display: grid;
   grid-template-columns:
-    minmax(180px, 1.6fr)
-    minmax(90px, 0.75fr)
-    minmax(80px, 0.65fr)
-    minmax(100px, 0.75fr)
-    30px;
+    minmax(190px, 1.55fr)
+    minmax(95px, 0.7fr)
+    minmax(105px, 0.85fr)
+    minmax(110px, 0.85fr)
+    26px;
 
   gap: 18px;
   align-items: center;
@@ -475,7 +475,12 @@ button {
 
   font-size: 13px;
 }
+.failure-reason-cell {
+  color: #657285;
 
+  font-size: 12px;
+  line-height: 1.4;
+}
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -1150,4 +1155,653 @@ button {
   color: #c2410c;
   font-size: 13px;
   font-weight: 700;
+}
+
+/* =========================
+   FINAL UI POLISH
+========================= */
+
+/* Clearer selected payment state */
+.recovery-row {
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.recovery-row:hover {
+  background: rgba(49, 94, 181, 0.045);
+}
+
+.recovery-row.selected {
+  background: rgba(49, 94, 181, 0.075);
+  box-shadow: inset 3px 0 0 #315eb5;
+}
+
+.recovery-row.selected .customer-cell strong,
+.recovery-row.selected .amount-cell {
+  color: #1f3f7c;
+}
+
+/* Clear status differentiation */
+.status-pill,
+.status-text {
+  color: #687586;
+}
+
+.status-pending {
+  color: #a06a14;
+}
+
+.status-pending .status-dot {
+  background: #d39b3d;
+}
+
+.status-contacted {
+  color: #315eb5;
+}
+
+.status-contacted .status-dot {
+  background: #5b83d7;
+}
+
+.status-recovered,
+.status-resolved {
+  color: #3d8a62;
+}
+
+.status-recovered .status-dot,
+.status-resolved .status-dot {
+  background: #4ca877;
+}
+
+.status-failed {
+  color: #a64242;
+}
+
+.status-failed .status-dot {
+  background: #c75b5b;
+}
+
+.status-unknown {
+  color: #7b8795;
+}
+
+.status-unknown .status-dot {
+  background: #98a3af;
+}
+
+/* Dedicated AI review card */
+.ai-review-card {
+  margin-top: 28px;
+  padding: 22px;
+
+  border: 1px solid #dce3ea;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 47, 67, 0.05);
+}
+
+.ai-review-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding-bottom: 17px;
+  border-bottom: 1px solid #e7ebef;
+}
+
+.ai-review-kicker {
+  margin-bottom: 8px;
+
+  color: #315eb5;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.ai-review-header h4 {
+  margin: 0;
+
+  color: #263549;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.ai-reviewed-badge {
+  flex-shrink: 0;
+
+  padding: 5px 8px;
+
+  border: 1px solid #d7eadf;
+  background: #f4faf6;
+  color: #3d8a62;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.ai-review-card .ai-message {
+  padding: 18px 0 0;
+}
+
+.ai-review-card .ai-message-label {
+  margin-bottom: 14px;
+}
+
+.ai-review-card .ai-message > p {
+  margin: 0;
+
+  color: #596779;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.analyzing-state {
+  min-height: 84px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #596779;
+  font-size: 13px;
+}
+
+.analysis-error {
+  margin: 0;
+  color: #a64242;
+}
+
+.structured-ai-analysis {
+  gap: 18px;
+  padding-top: 0;
+}
+
+.analysis-section {
+  gap: 8px;
+}
+
+.analysis-section-title {
+  color: #6c7888;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.analysis-section p {
+  color: #4f5d6f;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.priority-value {
+  padding: 5px 10px;
+
+  border: 1px solid #fde2c4;
+  background: #fff8ef;
+  color: #b45309;
+
+  font-size: 12px;
+}
+
+/* Slight readability improvement for directory tables */
+.payments-table-header,
+.table-header {
+  color: #7f8b99;
+}
+
+.payment-row,
+.recovery-row {
+  min-height: 68px;
+}
+
+@media (max-width: 700px) {
+  .ai-review-card {
+    padding: 18px;
+  }
+
+  .ai-review-header {
+    flex-direction: column;
+  }
+
+  .recovery-actions {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+/* =========================
+   RECOVERY DASHBOARD REFINEMENTS
+========================= */
+
+/* Keep the queue and intelligence area visually balanced */
+.workspace {
+  grid-template-columns: minmax(0, 1.5fr) minmax(360px, 0.82fr);
+  align-items: start;
+}
+
+.queue-section,
+.intelligence-panel {
+  min-width: 0;
+}
+
+/* Larger, clearer queue headings without changing the page structure */
+.table-header {
+  grid-template-columns:
+    minmax(190px, 1.55fr)
+    minmax(95px, 0.7fr)
+    minmax(105px, 0.85fr)
+    minmax(110px, 0.85fr)
+    26px;
+  gap: 18px;
+  padding: 17px 14px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  color: #6f7d8e;
+}
+
+.recovery-row {
+  grid-template-columns:
+    minmax(190px, 1.55fr)
+    minmax(95px, 0.7fr)
+    minmax(105px, 0.85fr)
+    minmax(110px, 0.85fr)
+    26px;
+  min-height: 82px;
+  padding: 22px 14px;
+}
+
+.customer-cell strong {
+  font-size: 15px;
+}
+
+.customer-cell small {
+  font-size: 11px;
+}
+
+.amount-cell {
+  font-size: 15px;
+}
+
+.method-cell {
+  font-size: 13px;
+}
+
+/* AI review card: stable structure with clear section hierarchy */
+.ai-review-card {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid #dce3ea;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(31, 47, 67, 0.045);
+}
+
+.ai-review-header {
+  padding-bottom: 16px;
+}
+
+.ai-review-kicker {
+  margin-bottom: 7px;
+}
+
+.ai-review-header h4 {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.ai-review-card .ai-message {
+  padding: 18px 0 0;
+}
+
+.structured-ai-analysis {
+  gap: 16px;
+}
+
+.analysis-section {
+  gap: 7px;
+}
+
+.analysis-section-title {
+  display: block;
+  margin: 0;
+  color: #34445c;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.analysis-section p {
+  margin: 0;
+  color: #4f5d6f;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* Keep the AI CTA attached to the AI card instead of separated at the bottom */
+.ai-review-action {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 16px;
+  border: none;
+  background: #315eb5;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ai-review-action:hover:not(:disabled) {
+  background: #294f99;
+  transform: translateY(-1px);
+}
+
+.ai-review-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* The footer now focuses only on the current recovery state */
+.panel-footer {
+  margin-top: 18px;
+}
+
+@media (max-width: 1000px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .recovery-row {
+    min-height: 0;
+  }
+
+  .ai-review-card {
+    padding: 18px;
+  }
+}
+
+
+/* =========================
+   FINAL RECOVERY TABLE + AI PANEL POLISH
+========================= */
+
+/* Six aligned columns: customer, amount, method, failure reason, status, arrow */
+.table-header {
+  grid-template-columns:
+    minmax(180px, 1.45fr)
+    minmax(80px, 0.65fr)
+    minmax(85px, 0.75fr)
+    minmax(140px, 1.1fr)
+    minmax(90px, 0.75fr)
+    26px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.recovery-row {
+  grid-template-columns:
+    minmax(180px, 1.45fr)
+    minmax(80px, 0.65fr)
+    minmax(85px, 0.75fr)
+    minmax(140px, 1.1fr)
+    minmax(90px, 0.75fr)
+    26px;
+}
+
+.failure-cell {
+  color: #657285;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* Compact the right panel so the AI card starts higher */
+.panel-topline {
+  margin-bottom: 28px;
+}
+
+.selected-payment {
+  padding-bottom: 20px;
+}
+
+.action-summary {
+  padding: 22px 0;
+}
+
+.ai-review-card {
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .table-header {
+    display: none;
+  }
+
+  .recovery-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .failure-cell {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================
+   PAYMENTS + CUSTOMERS DIRECTORY POLISH
+========================= */
+
+/* These pages do not need the oversized dashboard heading gap. */
+.directory-page-heading {
+  padding-bottom: 42px;
+}
+
+.directory-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 56px;
+  border-top: 1px solid #e0e5ea;
+  border-bottom: 1px solid #e0e5ea;
+}
+
+.directory-metric {
+  min-height: 142px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.directory-metric:not(:last-child) {
+  border-right: 1px solid #e0e5ea;
+}
+
+.directory-metric > span {
+  color: #697789;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.directory-metric strong {
+  margin-top: 12px;
+  color: #243448;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.directory-metric small {
+  margin-top: 7px;
+  color: #8a96a4;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.payments-header {
+  margin-bottom: 24px;
+}
+
+.payments-table-header {
+  font-size: 10px;
+  font-weight: 500;
+  color: #738092;
+}
+
+.payment-row {
+  min-height: 82px;
+  transition: background 0.2s ease;
+}
+
+.payment-row:hover {
+  background: rgba(49, 94, 181, 0.045);
+}
+
+.payment-id-cell {
+  color: #657285;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .directory-page-heading {
+    padding-bottom: 34px;
+  }
+
+  .directory-overview {
+    grid-template-columns: 1fr;
+    margin-bottom: 42px;
+  }
+
+  .directory-metric {
+    min-height: 125px;
+  }
+
+  .directory-metric:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #e0e5ea;
+  }
+
+  .payment-id-cell {
+    display: none;
+  }
+}
+
+.customer-metrics .metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #667085;
+  margin-bottom: 10px;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #243b53;
+  margin-bottom: 6px;
+}
+
+.metric-subtext {
+  font-size: 11px;
+  color: #7b8794;
+}
+/* =========================
+   CUSTOMER METRICS FIX
+========================= */
+
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  margin-bottom: 56px;
+
+  border-top: 1px solid #e0e5ea;
+  border-bottom: 1px solid #e0e5ea;
+}
+
+.metrics-strip .metric-card {
+  min-height: 142px;
+  padding: 26px 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.metrics-strip .metric-card:not(:last-child) {
+  border-right: 1px solid #e0e5ea;
+}
+
+.metrics-strip .metric-label {
+  margin-bottom: 10px;
+
+  color: #667085;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.metrics-strip .metric-value {
+  margin: 0 0 6px;
+
+  color: #243b53;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.metrics-strip .metric-subtext {
+  color: #7b8794;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/* Customer directory spacing */
+.customer-metrics {
+  margin-bottom: 56px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .metrics-strip {
+    grid-template-columns: 1fr;
+    margin-bottom: 42px;
+  }
+
+  .metrics-strip .metric-card {
+    min-height: 125px;
+  }
+
+  .metrics-strip .metric-card:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #e0e5ea;
+  }
+
+  .customer-metrics {
+    margin-bottom: 42px;
+  }
 }
