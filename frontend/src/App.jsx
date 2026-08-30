@@ -415,10 +415,16 @@ const handleSimulatePayment = async () => {
 }, []);
 
   // Always clear old AI output when the selected payment changes.
-  useEffect(() => {
-    setAiAnalysis("");
-    setAnalysisError("");
-  }, [selectedAction?.id]);
+useEffect(() => {
+
+  setAiAnalysis("");
+  setAnalysisError("");
+
+  // Keep Hinglish output tied to the currently selected payment too.
+  setHinglishMessage("");
+  setHinglishError("");
+
+}, [selectedAction?.payment_id]);
 
   // Load the payment recovery journey whenever a payment is selected.
   useEffect(() => {
@@ -1616,7 +1622,8 @@ const handleSimulatePayment = async () => {
                       ) : (
 
                         <p>
-                          {aiAnalysis || selectedMessage}
+                          Run the AI review to generate a recovery assessment
+    for this payment.
                         </p>
 
                       )}
