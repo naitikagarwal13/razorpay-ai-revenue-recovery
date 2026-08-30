@@ -167,6 +167,10 @@ function App() {
   const [analyzing, setAnalyzing] = useState(false);
   const [analysisError, setAnalysisError] = useState("");
 
+  const [hinglishMessage, setHinglishMessage] = useState("");
+const [hinglishLoading, setHinglishLoading] = useState(false);
+const [hinglishError, setHinglishError] = useState("");
+
 
   const [updatingStatus, setUpdatingStatus] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -443,12 +447,19 @@ const handleSimulatePayment = async () => {
   // SELECT ACTION
   // =========================
 
-  const selectAction = (action) => {
-    setSelectedAction(action);
-    setAiAnalysis("");
-    setAnalysisError("");
-    setStatusMessage("");
-  };
+ const selectAction = (action) => {
+
+  setSelectedAction(action);
+
+  setAiAnalysis("");
+  setAnalysisError("");
+
+  setHinglishMessage("");
+  setHinglishError("");
+
+  setStatusMessage("");
+
+};
 
   // =========================
   // AI ANALYSIS
@@ -517,6 +528,76 @@ const handleSimulatePayment = async () => {
       );
     } finally {
       setAnalyzing(false);
+    }
+  };
+
+    // =========================
+  // HINGLISH RECOVERY MESSAGE
+  // =========================
+
+  const handleHinglishMessage = async () => {
+    if (!selectedAction) return;
+
+    try {
+      setHinglishLoading(true);
+      setHinglishError("");
+      setHinglishMessage("");
+
+      const paymentId = selectedAction.payment_id;
+
+      const response = await fetch(
+        `${API_URL}/ai-analyze-hinglish/${paymentId}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Hinglish request failed: ${response.status}`
+        );
+      }
+
+      const data = await response.json();
+
+      console.log(
+        "Hinglish Message Response:",
+        data
+      );
+
+      if (data.status !== "success") {
+        throw new Error(
+          data.message ||
+          "Could not generate Hinglish message"
+        );
+      }
+
+      const message =
+        typeof data.hinglish_message === "string"
+          ? data.hinglish_message.trim()
+          : "";
+
+      if (!message) {
+        throw new Error(
+          "No Hinglish message was returned."
+        );
+      }
+
+      setHinglishMessage(message);
+
+    } catch (err) {
+      console.error(
+        "Hinglish message error:",
+        err
+      );
+
+      setHinglishError(
+        err.message ||
+        "Unable to generate Hinglish message. Please try again."
+      );
+
+    } finally {
+      setHinglishLoading(false);
     }
   };
 
@@ -1563,7 +1644,93 @@ const handleSimulatePayment = async () => {
                       </button>
 
                     </section>
+{/* HINGLISH RECOVERY MESSAGE - SEPARATE FROM AI REVIEW */}
+<section className="ai-review-card">
 
+  <div className="ai-review-header">
+    <div>
+      <div className="ai-review-kicker">
+        HINGLISH RECOVERY MESSAGE
+      </div>
+
+      <h4>
+        Customer-friendly recovery message
+      </h4>
+    </div>
+
+    {hinglishMessage && (
+      <span className="ai-reviewed-badge">
+        READY
+      </span>
+    )}
+  </div>
+
+  <div className="ai-message">
+
+    <div className="ai-message-label">
+      NATURAL INDIAN HINGLISH
+    </div>
+
+    {hinglishLoading ? (
+
+      <div className="analyzing-state">
+        <Loader2
+          className="spin"
+          size={20}
+        />
+
+        <span>
+          Generating Hinglish message...
+        </span>
+      </div>
+
+    ) : hinglishError ? (
+
+      <p className="analysis-error">
+        {hinglishError}
+      </p>
+
+    ) : hinglishMessage ? (
+
+      <p>
+        {hinglishMessage}
+      </p>
+
+    ) : (
+
+      <p>
+        Generate a short, customer-friendly Hinglish
+        recovery message for this failed payment.
+      </p>
+
+    )}
+
+  </div>
+
+  <button
+    className="ai-review-action"
+    onClick={handleHinglishMessage}
+    disabled={hinglishLoading}
+  >
+
+    {hinglishLoading
+      ? "Generating..."
+      : hinglishMessage
+      ? "Refresh Hinglish Message"
+      : "Generate Hinglish Message"}
+
+    {hinglishLoading ? (
+      <Loader2
+        className="spin"
+        size={17}
+      />
+    ) : (
+      <ArrowUpRight size={17} />
+    )}
+
+  </button>
+
+</section>
                     {statusMessage && (
                       <div className="status-feedback">
                         {statusMessage}
