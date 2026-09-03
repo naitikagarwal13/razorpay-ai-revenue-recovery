@@ -994,17 +994,18 @@ button {
 
   gap: 20px;
 
-  padding: 15px 14px;
+  padding: 16px 14px;
 
   border-top: 1px solid #e0e5ea;
   border-bottom: 1px solid #e0e5ea;
 
-  color: #8a95a3;
+  color: #607086;
 
-  font-family: "DM Mono", monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+font-family: "DM Mono", monospace;
+font-size: 16px !important;
+font-weight: 700 !important;
+letter-spacing: 0.04em;
+text-transform: uppercase;
 }
 
 .payment-row {
@@ -1032,8 +1033,10 @@ button {
 }
 
 .payment-row:hover {
-  background: rgba(49, 94, 181, 0.03);
+  background: rgba(37, 99, 235, 0.08);
+  transition: background 0.2s ease;
 }
+
 /* DELETE PAYMENT BUTTON */
 
 .payment-delete-cell {
@@ -1657,11 +1660,14 @@ button {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+
+  background: #f4f7ff;
+border-radius: 12px;
 }
 
 .directory-metric:not(:last-child) {
   border-right: 1px solid #e0e5ea;
-}
+};
 
 .directory-metric > span {
   color: #697789;
@@ -1671,7 +1677,7 @@ button {
 
 .directory-metric strong {
   margin-top: 12px;
-  color: #243448;
+  color: #2f5fb3;
   font-size: 30px;
   font-weight: 600;
   letter-spacing: -0.035em;
@@ -1689,9 +1695,9 @@ button {
 }
 
 .payments-table-header {
-  font-size: 10px;
-  font-weight: 500;
-  color: #738092;
+    font-size: 16px;
+    font-weight: 700;
+    color: #738092;
 }
 
 .payment-row {
@@ -1836,4 +1842,103 @@ button {
   .customer-metrics {
     margin-bottom: 42px;
   }
+}
+/* =========================
+   SUBTLE COLOUR POLISH
+========================= */
+
+body {
+  background: #e8edf5;
+}
+
+body {
+  background: #e9eef5;
+}
+
+/* Colored payment metric cards */
+.directory-metric {
+  border-radius: 10px;
+  padding: 24px 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.directory-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.12);
+}
+
+/* Total payment volume */
+.directory-metric:nth-child(1) {
+  background: #eff6ff;
+}
+
+/* Failed payments */
+.directory-metric:nth-child(2) {
+  background: #fef2f2;
+}
+
+/* Successful payments */
+.directory-metric:nth-child(3) {
+  background: #f0fdf4;
+}
+
+/* Recovery metric cards */
+.metric {
+  background: #f4f7ff;
+  border: 1px solid #dbe4f3;
+  border-radius: 12px;
+  padding: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(47, 95, 179, 0.12);
+}
+
+.metric-value {
+  color: #2f5fb3;
+}
+
+/* =========================
+   NAVIGATION HOVER EFFECT
+========================= */
+
+.nav-item {
+  font-size: 16px;
+  font-weight: 600;
+  color: #526070;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: #315ebb;
+  background: rgba(49, 94, 187, 0.08);
+  border-radius: 6px;
+}
+
+.nav-item.active {
+  color: #244a96;
+  font-weight: 700;
+}
+
+/* CUSTOMERS PAGE HEADING HOVER */
+
+.page-heading.directory-page-heading > div:first-child {
+  transition: all 0.25s ease;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.page-heading.directory-page-heading > div:first-child:hover {
+  background: rgba(49, 94, 187, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(49, 94, 187, 0.10);
+}
+.payment-row .payment-id-cell {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #425466;
 }

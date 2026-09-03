@@ -918,13 +918,14 @@ useEffect(() => {
       }
 
       if (
-        status === "captured" ||
-        status === "completed" ||
-        status === "success" ||
-        status === "paid"
-      ) {
-        stats.successful += 1;
-      }
+  status === "captured" ||
+  status === "completed" ||
+  status === "success" ||
+  status === "paid" ||
+  status === "recovered"
+) {
+  stats.successful += 1;
+}
 
       return stats;
     },
