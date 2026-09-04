@@ -1,90 +1,117 @@
 # Razorpay AI Revenue Recovery
 
-An AI-powered payment recovery dashboard that helps businesses identify failed payments, understand revenue at risk, and determine appropriate recovery strategies.
+Razorpay AI Revenue Recovery is a full-stack web application designed to help businesses identify failed payments and take suitable recovery actions.
 
-The application combines payment data, customer information, recovery actions, and AI-generated recommendations in one dashboard.
+The project provides a dashboard for managing payments, customers, and recovery actions. It also uses AI to analyze failed payments and suggest what can be done next, including generating personalized recovery messages.
 
----
-
-## Problem Statement
-
-Failed payments can lead to lost revenue.
-
-Businesses often need to manually identify failed transactions, understand the reason for failure, contact customers, and decide the next recovery step.
-
-Razorpay AI Revenue Recovery brings these processes together and provides AI-powered recovery recommendations.
+The main idea behind the project is to make the payment recovery process easier by bringing payment information, customer details, and AI-based recommendations into one place.
 
 ---
 
 ## Features
 
-### Revenue Recovery Dashboard
+### Payment Dashboard
 
-The Recovery dashboard provides an overview of payments requiring attention.
+The Payments page provides an overview of payment activity.
 
-It includes:
+Users can:
 
-- Revenue at risk
-- Payments awaiting recovery action
-- Recovery coverage
-- Recovery metrics
-- Payments requiring attention
-- AI-powered recovery analysis
-- Revenue risk simulation
-
-### AI Payment Analysis
-
-For failed payments, the system generates a structured recovery recommendation that can include:
-
-- Failure interpretation
-- Recovery strategy
-- Priority
-- Personalized customer message
-- Suggested next action
-
-### Payments Management
-
-The Payments page allows users to:
-
-- View payment information
-- Search payments
-- Filter payments by status
-- Filter payments by payment method
+- View all payment records
+- See payment IDs, customer details, amount, status, and payment method
+- Search for payments
+- Filter payments based on status
+- Filter payments based on payment method
 - Track successful and failed payments
 - Refresh payment data
-- Delete payments
+- Delete payment records
 
-Payment information includes:
+The page also displays important payment metrics to give a quick overview of the available payment data.
 
-- Customer
-- Amount
-- Payment method
-- Payment status
-- Payment ID
+---
 
-### Customer Directory
+### Customer Management
 
-The Customers page provides a customer-focused view of payment information.
+The Customers page provides a customer-focused view of the payment data.
 
-It includes:
+It includes information such as:
 
-- Total customers
-- Total payments
-- Customer value
 - Customer name
-- Email
-- Phone number
-- Payment count
-- Total payment value
 - Customer ID
-- Customer search
-- Data refresh
+- Email address
+- Phone number
+- Number of payments
+- Total payment value
 
-### Recovery Actions
+Users can also search for customers and refresh the displayed data.
 
-Recovery actions are stored in the database to track the next step for failed payments.
+The customer metrics provide a quick overview of the total customers, payments, and overall customer value.
 
-The system also prevents unnecessary duplicate recovery actions for the same payment.
+---
+
+### AI-Powered Revenue Recovery
+
+The Recovery page focuses on failed payments that may result in revenue loss.
+
+The dashboard shows important information such as:
+
+- Revenue at risk
+- Payments awaiting action
+- Recovery coverage
+- Payments requiring attention
+- Recovery-related metrics
+
+A failed payment can be selected and analyzed using AI.
+
+The AI analysis provides useful information including:
+
+- Failure interpretation
+- Suggested recovery strategy
+- Priority level
+- Recommended next action
+- Personalized message for the customer
+
+This helps in deciding how a particular failed payment should be handled.
+
+---
+
+### Hinglish Recovery Messages
+
+The application can generate personalized customer recovery messages in a natural Hinglish style.
+
+This makes the communication feel more conversational and familiar while still encouraging the customer to complete or retry the payment.
+
+The generated message can be used as a suggested communication approach for payment recovery.
+
+---
+
+### Recovery Action Tracking
+
+Recovery actions are stored and tracked through the application.
+
+This makes it possible to keep track of what action has been suggested or taken for a failed payment.
+
+The system also helps prevent unnecessary duplicate recovery actions for the same payment.
+
+---
+
+### Revenue Risk Simulation
+
+The project includes a revenue risk simulation feature to provide a better understanding of potential revenue loss and recovery scenarios.
+
+This gives users another way to visualize the impact of failed payments and the importance of taking recovery actions.
+
+---
+
+### Search and Filtering
+
+The application includes search and filtering functionality to make it easier to work with larger sets of payment and customer data.
+
+Users can quickly:
+
+- Search payments
+- Search customers
+- Filter payment status
+- Filter payment methods
 
 ---
 
@@ -105,9 +132,9 @@ The system also prevents unnecessary duplicate recovery actions for the same pay
 
 - MySQL
 
-### AI
+### AI Integration
 
-- AI API for payment recovery analysis
+- AI API for payment analysis and recovery recommendations
 
 ---
 
@@ -118,6 +145,7 @@ razorpay/
 │
 ├── backend/
 │   ├── main.py
+│   ├── requirements.txt
 │   └── .env
 │
 ├── frontend/
