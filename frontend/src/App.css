@@ -1942,3 +1942,177 @@ body {
   font-weight: 600;
   color: #425466;
 }
+
+/* =========================
+   LIGHT FINTECH THEME
+   GLOBAL COLOUR OVERRIDES
+========================= */
+
+:root {
+  background: #f7f9fc;
+}
+
+body,
+.app-shell {
+  background: #f7f9fc;
+}
+
+/* Softer top navigation */
+.topbar {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom-color: #d9e3ee;
+}
+
+/* Main accent colour */
+.brand-mark,
+.primary-action,
+.success-action,
+.ai-review-action {
+  background: #4f6fd6;
+}
+
+/* Button hover */
+.primary-action:hover,
+.success-action:hover,
+.ai-review-action:hover:not(:disabled) {
+  background: #3f5fbe;
+}
+
+/* Main content cards */
+.metric {
+  background: #ffffff;
+  border-color: #d9e5f2;
+}
+
+/* Recovery metrics hover */
+.metric:hover {
+  box-shadow: 0 10px 24px rgba(79, 111, 214, 0.12);
+}
+
+/* Directory metric cards */
+.directory-metric {
+  border: 1px solid #dce6f0;
+}
+
+/* Softer individual metric colours */
+.directory-metric:nth-child(1) {
+  background: #edf4ff;
+}
+
+.directory-metric:nth-child(2) {
+  background: #fff4f3;
+}
+
+.directory-metric:nth-child(3) {
+  background: #effaf4;
+}
+
+/* Tables and content areas */
+.recovery-row:hover,
+.payment-row:hover {
+  background: rgba(79, 111, 214, 0.06);
+}
+
+.recovery-row.selected {
+  background: rgba(79, 111, 214, 0.1);
+  box-shadow: inset 3px 0 0 #4f6fd6;
+}
+
+/* AI card */
+.ai-review-card {
+  background: #fbfdff;
+  border-color: #d9e5f0;
+  box-shadow: 0 10px 26px rgba(44, 62, 80, 0.05);
+}
+
+/* Buttons */
+.refresh-button {
+  background: #ffffff;
+  border-color: #d5e0eb;
+}
+
+.refresh-button:hover {
+  background: #f5f8fc;
+  border-color: #aebfd0;
+}
+
+/* Navigation */
+.nav-item.active {
+  color: #4f6fd6;
+}
+
+.nav-item:hover {
+  color: #4f6fd6;
+  background: rgba(79, 111, 214, 0.08);
+}
+
+/* Accent text */
+.metric-value,
+.directory-metric strong,
+.action-summary strong {
+  color: #3f63c4;
+}
+
+/* Dividers and borders */
+.content-divider,
+.overview,
+.directory-overview,
+.metrics-strip {
+  border-color: #dce5ee;
+}
+
+/* Selected and interactive elements */
+.recovery-row:hover .row-arrow {
+  color: #4f6fd6;
+}
+
+/* Softer page heading hover */
+.page-heading.directory-page-heading > div:first-child:hover {
+  background: rgba(79, 111, 214, 0.07);
+  box-shadow: 0 6px 18px rgba(79, 111, 214, 0.09);
+}
+.directory-overview,
+.payments-page,
+.recovery-page {
+  background: transparent;
+} 
+/* Subtle depth for main cards */
+.metric,
+.directory-metric {
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.04);
+}
+
+.metric:hover,
+.directory-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(79, 111, 214, 0.10);
+}
+/* =========================
+   3-COLOUR METRIC CARDS
+========================= */
+
+/* RECOVERY PAGE */
+.metrics-strip .metric-card:nth-child(1) {
+  background: #edf4ff;
+}
+
+.metrics-strip .metric-card:nth-child(2) {
+  background: #fff4f3;
+}
+
+.metrics-strip .metric-card:nth-child(3) {
+  background: #effaf4;
+}
+
+/* CUSTOMER PAGE */
+.customer-metrics .metric-card:nth-child(1) {
+  background: #edf4ff;
+}
+
+.customer-metrics .metric-card:nth-child(2) {
+  background: #fff4f3;
+}
+
+.customer-metrics .metric-card:nth-child(3) {
+  background: #effaf4;
+}
